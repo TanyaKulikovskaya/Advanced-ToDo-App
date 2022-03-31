@@ -1,4 +1,4 @@
-# advanced-todo-app
+# Advanced-ToDo-App
 
 ## Project setup
 ```
