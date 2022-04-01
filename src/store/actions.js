@@ -10,5 +10,8 @@ export default {
       id: id,
       status: !isCompleted
     })
+  },
+  delete_task ({ commit }, id) {
+    commit('REMOVE_TASK', id)
   }
 }

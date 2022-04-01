@@ -11,6 +11,7 @@
           :key="item.id"
           :tasks_list_item="item"
           @changeCompleteStatus="changeTaskStatus(item)"
+          @remove="removeTask(item.id)"
         />
       </transition-group>
     </draggable>
@@ -46,11 +47,15 @@ export default {
   methods: {
     ...mapActions(['update_tasks']),
     ...mapActions(['toogle_task_status']),
+    ...mapActions(['delete_task']),
     changeTaskStatus (item) {
       this.toogle_task_status({
         id: item.id,
         isCompleted: item.isCompleted
       })
+    },
+    removeTask (id) {
+      this.delete_task(id)
     }
   }
 }
@@ -72,26 +77,19 @@ export default {
   }
 
   .list {
-    position: relative;
-    backface-visibility: hidden;
-    z-index: 1;
-    &-move {
-        transition: all .6s ease-in-out .05s;
-    }
-    &-enter-active {
-        transition: all .4s ease-out;
-    }
+    &-enter-active,
     &-leave-active {
-        transition: all .2s ease-in;
-        position: absolute;
-        z-index: 0;
+        transition: opacity .3s linear, transform .5s ease;
     }
     &-enter,
     &-leave-to {
         opacity: 0;
     }
-    &-enter {
-        transform: scale(0.9);
+    &-enter{
+     transform: translateX(-100px);
+    }
+    &-leave-to{
+      transform: translateX(100px);
     }
   }
 </style>

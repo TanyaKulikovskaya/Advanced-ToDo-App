@@ -7,10 +7,15 @@
     >
       {{ tasks_list_item.title }}
     </p>
-  </li>
+    <unicon
+      name="trash"
+      @click="remove"
+    />
+    </li>
 </template>
 
 <script>
+
 export default {
   props: {
     tasks_list_item: {
@@ -23,6 +28,9 @@ export default {
   methods: {
     toogleCompleteStatus () {
       this.$emit('changeCompleteStatus')
+    },
+    remove () {
+      this.$emit('remove')
     }
   }
 }
@@ -31,7 +39,7 @@ export default {
 <style lang="scss">
   .tasks-list-item {
     display: flex;
-    padding: 1em 1.75em 1em 3em;
+    padding: 1em 1.75em;
     border-radius: $radius;
     box-shadow: 0px 0px 6px rgba(0, 0, 0, .125);
     background-color: $white;
