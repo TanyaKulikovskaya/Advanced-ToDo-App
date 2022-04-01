@@ -18,17 +18,17 @@ export default {
 </script>
 
 <style lang="scss">
-    .tasks-list-item {
-        padding: 16px 12px;
-        border-radius: $radius;
-        box-shadow: 0px 0px 6px rgba(0, 0, 0, .125);
-        background-color: $white;
-        &__title {
-            font-weight: 500;
-            font-size: 18px;
-        }
-        &:not(:last-child) {
-            margin-bottom: 12px;
-        }
+  .tasks-list-item {
+    padding: 1em 1.75em;
+    border-radius: $radius;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, .125);
+    background-color: $white;
+    &__title {
+        font-weight: 500;
+        font-size: 18px;
     }
+    &:not(:last-child) {
+        margin-bottom: 12px;
+    }
+  }
 </style>
