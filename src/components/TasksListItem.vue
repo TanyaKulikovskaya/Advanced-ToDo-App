@@ -1,6 +1,12 @@
 <template>
   <li class="tasks-list-item">
-      <span class="tasks-list-item__title">{{ tasks_list_item.title }}</span>
+    <p
+      class="tasks-list-item__title"
+      :class="{ done: tasks_list_item.isCompleted }"
+      @click="toogleCompleteStatus"
+    >
+      {{ tasks_list_item.title }}
+    </p>
   </li>
 </template>
 
@@ -13,22 +19,35 @@ export default {
         return {}
       }
     }
+  },
+  methods: {
+    toogleCompleteStatus () {
+      this.$emit('changeCompleteStatus')
+    }
   }
 }
 </script>
 
 <style lang="scss">
   .tasks-list-item {
-    padding: 1em 1.75em;
+    display: flex;
+    padding: 1em 1.75em 1em 3em;
     border-radius: $radius;
     box-shadow: 0px 0px 6px rgba(0, 0, 0, .125);
     background-color: $white;
     &__title {
-        font-weight: 500;
-        font-size: 18px;
+      flex: 1;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 28px;
+      cursor: pointer;
+      &.done {
+        text-decoration: line-through;
+        color: $gray;
+      }
     }
     &:not(:last-child) {
-        margin-bottom: 12px;
+      margin-bottom: 12px;
     }
   }
 </style>

@@ -10,6 +10,7 @@
           v-for="item in tasksList"
           :key="item.id"
           :tasks_list_item="item"
+          @changeCompleteStatus="changeTaskStatus(item)"
         />
       </transition-group>
     </draggable>
@@ -38,12 +39,19 @@ export default {
         return this.tasks
       },
       set (tasks) {
-        this.updateTasks(tasks)
+        this.update_tasks(tasks)
       }
     }
   },
   methods: {
-    ...mapActions(['updateTasks'])
+    ...mapActions(['update_tasks']),
+    ...mapActions(['toogle_task_status']),
+    changeTaskStatus (item) {
+      this.toogle_task_status({
+        id: item.id,
+        isCompleted: item.isCompleted
+      })
+    }
   }
 }
 </script>

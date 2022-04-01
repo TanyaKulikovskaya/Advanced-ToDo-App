@@ -34,7 +34,7 @@ export default {
         const newTask = {
           id: Math.floor(Math.random() * 10000),
           title: this.taskTitle,
-          status: 0,
+          isCompleted: false,
           created_at: new Date()
         }
         this.add_task(newTask)
