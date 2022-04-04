@@ -13,5 +13,11 @@ export default {
   },
   delete_task ({ commit }, id) {
     commit('REMOVE_TASK', id)
+  },
+  change_task_title ({ commit }, { id, updatedTitle }) {
+    commit('SET_TASK_TITLE', {
+      id: id,
+      title: updatedTitle
+    })
   }
 }

@@ -12,6 +12,7 @@
           :tasks_list_item="item"
           @changeCompleteStatus="changeTaskStatus(item)"
           @remove="removeTask(item.id)"
+          @changeTitle="changeTaskTitle"
         />
       </transition-group>
     </draggable>
@@ -48,6 +49,7 @@ export default {
     ...mapActions(['update_tasks']),
     ...mapActions(['toogle_task_status']),
     ...mapActions(['delete_task']),
+    ...mapActions(['change_task_title']),
     changeTaskStatus (item) {
       this.toogle_task_status({
         id: item.id,
@@ -56,6 +58,9 @@ export default {
     },
     removeTask (id) {
       this.delete_task(id)
+    },
+    changeTaskTitle (data) {
+      this.change_task_title(data)
     }
   }
 }

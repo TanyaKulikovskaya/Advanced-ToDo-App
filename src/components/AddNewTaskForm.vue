@@ -45,14 +45,27 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .form {
     display: flex;
     padding-bottom: 18px;
     border-bottom: 2px solid $accent;
     &__input {
-        flex: 1 1 auto;
-        margin-right: 12px;
+      display: block;
+      width: 100%;
+      padding: 1em 1.75em;
+      outline: none;
+      border: $border;
+      border-radius: $radius;
+      color: $gray;
+      flex: 1 1 auto;
+      margin-right: 12px;
+      &::placeholder {
+        opacity: 0.5;
+      }
+      &:focus {
+        border: $focus-border;
+      }
     }
     &__btn {
         flex: 0 1 180px;
