@@ -3,20 +3,35 @@
     <div class="container">
       <h1>Todo App</h1>
       <add-new-task-form />
+      <select-sort-option v-show="tasks.length > 0" />
       <tasks-list />
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex'
 import AddNewTaskForm from './components/AddNewTaskForm.vue'
 import TasksList from './components/TasksList.vue'
+import SelectSortOption from './components/SelectSortOption.vue'
 
 export default {
   name: 'App',
   components: {
     AddNewTaskForm,
-    TasksList
+    TasksList,
+    SelectSortOption
+  },
+  created () {
+    if (this.tasks.length > 0) {
+      this.SORT_TASKS()
+    }
+  },
+  computed: {
+    ...mapGetters(['tasks'])
+  },
+  methods: {
+    ...mapMutations(['SORT_TASKS'])
   }
 }
 </script>

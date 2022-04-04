@@ -9,7 +9,9 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    tasks: JSON.parse(localStorage.getItem('tasks') || '[]')
+    tasks: JSON.parse(localStorage.getItem('tasks') || '[]'),
+    sortOptions: ['time', 'content', 'status'],
+    selectedSortOption: JSON.parse(localStorage.getItem('sort_by')) || 'time'
   },
   mutations,
   actions,

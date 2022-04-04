@@ -20,5 +20,23 @@ export default {
   SET_TASK_TITLE (state, { id, title }) {
     state.tasks = state.tasks.map((item) => (item.id !== id ? item : { ...item, title: title }))
     LocalStorage.saveTasks(state.tasks)
+  },
+  SET_SORT_OPTION (state, option) {
+    state.selectedSortOption = option
+    LocalStorage.saveSortOption(state.selectedSortOption)
+  },
+  SORT_TASKS (state) {
+    switch (state.selectedSortOption) {
+      case 'time':
+        state.tasks = [...state.tasks].sort((a, b) => Date.parse(a.created_at) - Date.parse(b.created_at))
+        break
+      case 'content':
+        state.tasks = [...state.tasks].sort((a, b) => a.title.localeCompare(b.title))
+        break
+      case 'status':
+        state.tasks = [...state.tasks].sort((a, b) => a.isCompleted - b.isCompleted)
+        break
+    }
+    LocalStorage.saveTasks(state.tasks)
   }
 }

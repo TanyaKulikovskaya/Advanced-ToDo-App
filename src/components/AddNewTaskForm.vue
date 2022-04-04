@@ -50,6 +50,7 @@ export default {
     display: flex;
     padding-bottom: 18px;
     border-bottom: 2px solid $accent;
+    margin-bottom: 18px;
     &__input {
       display: block;
       width: 100%;

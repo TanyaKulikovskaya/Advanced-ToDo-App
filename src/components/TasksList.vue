@@ -68,8 +68,8 @@ export default {
 
 <style lang="scss">
   .tasks-list {
-    padding-top: 36px;
-    padding-bottom: 36px;
+    padding-top: 18px;
+    padding-bottom: 18px;
   }
 
   .sortable-chosen {
@@ -82,19 +82,26 @@ export default {
   }
 
   .list {
-    &-enter-active,
+    position: relative;
+    backface-visibility: hidden;
+    z-index: 1;
+    &-move {
+      transition: all .6s ease-in-out .05s;
+    }
+    &-enter-active {
+      transition: all .4s ease-out;
+    }
     &-leave-active {
-        transition: opacity .3s linear, transform .5s ease;
+      transition: all .2s ease-in;
+      position: absolute;
+      z-index: 0;
     }
     &-enter,
     &-leave-to {
-        opacity: 0;
+       opacity: 0;
     }
-    &-enter{
-     transform: translateX(-100px);
-    }
-    &-leave-to{
-      transform: translateX(100px);
+    &-enter {
+      transform: scale(0.9);
     }
   }
 </style>
