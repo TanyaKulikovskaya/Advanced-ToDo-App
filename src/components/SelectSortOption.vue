@@ -22,8 +22,7 @@ import { mapActions, mapGetters } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters(['sortOptions']),
-    ...mapGetters(['selectedSortOption']),
+    ...mapGetters(['sortOptions', 'selectedSortOption']),
     selectedSort: {
       get () {
         return this.selectedSortOption

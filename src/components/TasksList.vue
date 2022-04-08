@@ -46,10 +46,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['update_tasks']),
-    ...mapActions(['toogle_task_status']),
-    ...mapActions(['delete_task']),
-    ...mapActions(['change_task_title']),
+    ...mapActions(['update_tasks', 'toogle_task_status', 'delete_task', 'change_task_title']),
     changeTaskStatus (item) {
       this.toogle_task_status({
         id: item.id,
